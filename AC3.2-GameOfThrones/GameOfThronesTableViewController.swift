@@ -38,6 +38,26 @@ class GameOfThronesTableViewController: UITableViewController {
             }
         }
     }
+    
+    func cellColor(episode: GOTEpisode, cell: UITableViewCell) {
+        switch episode.season {
+        case 1:
+            cell.backgroundColor = .red
+        case 2:
+            cell.backgroundColor = .orange
+        case 3:
+            cell.backgroundColor = .yellow
+        case 4:
+            cell.backgroundColor = .green
+        case 5:
+            cell.backgroundColor = .blue
+        case 6:
+            cell.backgroundColor = .purple
+        default:
+            cell.backgroundColor = .white
+        }
+            
+    }
 
     // MARK: - Table view data source
 
@@ -58,7 +78,7 @@ class GameOfThronesTableViewController: UITableViewController {
         let episode: GOTEpisode = episodes[indexPath.row]
         cell.textLabel?.text = episode.name
         cell.detailTextLabel?.text = "Airdate: \(episode.airdate)"
-        
+        cellColor(episode: episode, cell: cell)
         // Configure the cell...
 
         return cell
