@@ -10,42 +10,79 @@ import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
 
+    var episodes = [GOTEpisode]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .lightGray
+        loadData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func loadData() {
+        guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
+            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
+            let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
+                return
+        }
+        
+        if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
+            for epDict in episodes {
+                if let ep = GOTEpisode(withDict: epDict) {
+                    self.episodes.append(ep)
+                }
+            }
+        }
+    }
+    
+    func cellColor(episode: GOTEpisode, cell: UITableViewCell) {
+        switch episode.season {
+        case 1:
+            cell.backgroundColor = .red
+        case 2:
+            cell.backgroundColor = .orange
+        case 3:
+            cell.backgroundColor = .yellow
+        case 4:
+            cell.backgroundColor = .green
+        case 5:
+            cell.backgroundColor = .blue
+        case 6:
+            cell.backgroundColor = .purple
+        default:
+            cell.backgroundColor = .white
+        }
+            
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return episodes.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GOTCell", for: indexPath)
+        
+        let episode: GOTEpisode = episodes[indexPath.row]
+        cell.textLabel?.text = episode.name
+        cell.detailTextLabel?.text = "Airdate: \(episode.airdate)"
+        cellColor(episode: episode, cell: cell)
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,14 +119,21 @@ class GameOfThronesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let tableViewCell = sender as? UITableViewCell {
+            if segue.identifier == "GOTSegue" {
+                let detailVC = segue.destination as? DetailViewController
+                let cellIndexPath = self.tableView.indexPath(for: tableViewCell)!
+                let selectedEpisode: GOTEpisode = episodes[cellIndexPath.row]
+                detailVC?.episode = selectedEpisode
+            }
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
