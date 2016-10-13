@@ -58,7 +58,11 @@ class GameOfThronesTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        
+        /*
+        let crayonsAtIndexPath = self.crayons[indexPath.row]
+        cell.textLabel?.text = crayonsAtIndexPath.name
+        cell.backgroundColor = UIColor(red: CGFloat(crayonsAtIndexPath.red), green: CGFloat(crayonsAtIndexPath.green), blue: CGFloat(crayonsAtIndexPath.blue), alpha: CGFloat(1.0))
+        */
 
         return cell
     }
