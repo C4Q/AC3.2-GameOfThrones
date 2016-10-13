@@ -13,6 +13,9 @@ class GameOfThronesTableViewController: UITableViewController {
     var episodes = [GOTEpisode]()
     
     func loadData() {
+        
+// we need to unwrap the episodes and then throw that data into the cells
+        
         guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
             let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
             let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
@@ -32,6 +35,7 @@ class GameOfThronesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         loadData()
+        dump(episodes)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,30 +46,31 @@ class GameOfThronesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return episodes.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return episodes.count
+//    }
+//
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
 
         // Configure the cell...
         
         /*
-        let crayonsAtIndexPath = self.crayons[indexPath.row]
-        cell.textLabel?.text = crayonsAtIndexPath.name
-        cell.backgroundColor = UIColor(red: CGFloat(crayonsAtIndexPath.red), green: CGFloat(crayonsAtIndexPath.green), blue: CGFloat(crayonsAtIndexPath.blue), alpha: CGFloat(1.0))
+        let thisCellsEpisode = self.episode[indexPath.row]
+        ??? = thisCellsEpisode.name
+        ??? = thisCellsEpisode.number
+        ??? = thisCellsEpisode.airdate
         */
 
-        return cell
-    }
+//        return cell
+//    }
 
     /*
     // Override to support conditional editing of the table view.
