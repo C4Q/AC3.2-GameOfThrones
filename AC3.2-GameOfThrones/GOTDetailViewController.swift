@@ -26,23 +26,20 @@ class GOTDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let red = randomColor()
+        let blue = randomColor()
+        let green = randomColor()
         
         epTitle.text = stupidEpisode?.name
         summary.text = stupidEpisode?.summary
+        
         if let urlString = stupidEpisode?.url,
             let website = URL(string: urlString),
             let unwrappedURL = try? Data.init(contentsOf: website)
         {
            image.image = UIImage(data: unwrappedURL)
         }
-        
-      
-        
-        
-        let red = randomColor()
-        let blue = randomColor()
-        let green = randomColor()
-        
+
         view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
         
     }
