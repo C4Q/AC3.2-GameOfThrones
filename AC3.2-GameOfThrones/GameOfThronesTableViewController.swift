@@ -10,10 +10,28 @@ import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
 
+    var episodes = [GOTEpisode]()
+    
+    func loadData() {
+        guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
+            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
+            let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
+                return
+        }
+        
+        if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
+            for epDict in episodes {
+                if let ep = GOTEpisode(withDict: epDict) {
+                    self.episodes.append(ep)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        loadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
