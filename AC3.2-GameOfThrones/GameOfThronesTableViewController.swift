@@ -9,7 +9,7 @@
 import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
-
+    
     var episodes = [GOTEpisode]()
     
     func loadData() {
@@ -51,9 +51,11 @@ class GameOfThronesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         return episodes.count
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
 
@@ -62,7 +64,7 @@ class GameOfThronesTableViewController: UITableViewController {
 
         let thisCellsEpisode = self.episodes[indexPath.row]
         //cell.episodeTitle?.text = thisCellsEpisode.name
-        cell.textLabel?.text = "\(thisCellsEpisode.name)"
+        //cell.textLabel?.text = thisCellsEpisode.name
         //cell.episodeNumber?.text = thisCellsEpisode.number
         //cell.episodeDate?.text = thisCellsEpisode.airdate
  

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,49 +21,51 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="eppy" selectionStyle="default" indentationWidth="10" reuseIdentifier="eppy" rowHeight="119" id="Gzx-2j-BOY" userLabel="Eppy" customClass="selectEpisodeCellTableViewCell" customModule="AC3_2_GameOfThrones" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="eppy" selectionStyle="default" indentationWidth="10" reuseIdentifier="eppy" rowHeight="119" id="Gzx-2j-BOY" userLabel="Eppy">
                                 <rect key="frame" x="0.0" y="136" width="375" height="119"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gzx-2j-BOY" id="jys-lM-aJJ">
                                     <frame key="frameInset" width="375" height="118"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9FK-gF-uvI">
-                                            <frame key="frameInset" minX="8" minY="8" width="105" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wa8-v3-srf">
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="#00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKi-nG-TOT">
-                                                    <frame key="frameInset" width="26" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Baskerville-SemiBold" family="Baskerville" pointSize="15"/>
-                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aed-ud-HOf">
-                                                    <frame key="frameInset" minY="18" width="105" height="46"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qxK-Sd-1eP">
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sharp Chair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8P-E6-9gG">
-                                                            <frame key="frameInset" width="105" height="21"/>
-                                                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7l-2m-vLY">
+                                                            <fontDescription key="fontDescription" name="Baskerville-SemiBold" family="Baskerville" pointSize="15"/>
+                                                            <color key="textColor" red="0.43642956020000001" green="0.43641647700000002" blue="0.43642389770000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="Sharp Chair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6x-bf-iVv">
+                                                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="11/11/11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIk-M7-88K">
-                                                            <frame key="frameInset" minY="26" width="77" height="20"/>
-                                                            <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="17"/>
-                                                            <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="p7l-2m-vLY" secondAttribute="trailing" constant="42" id="002-s7-SYA"/>
+                                                        <constraint firstItem="V6x-bf-iVv" firstAttribute="leading" secondItem="qxK-Sd-1eP" secondAttribute="leading" constant="42" id="8Kx-TB-62b"/>
+                                                        <constraint firstAttribute="trailing" secondItem="V6x-bf-iVv" secondAttribute="trailing" id="KHR-sl-irS"/>
+                                                        <constraint firstItem="p7l-2m-vLY" firstAttribute="leading" secondItem="qxK-Sd-1eP" secondAttribute="leading" id="zbO-wW-fKr"/>
+                                                    </constraints>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ph2-xz-YxG">
+                                                    <fontDescription key="fontDescription" name="Baskerville-SemiBold" family="Baskerville" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="wa8-v3-srf" secondAttribute="trailing" id="20P-Ku-ulY"/>
+                                        <constraint firstItem="wa8-v3-srf" firstAttribute="leading" secondItem="jys-lM-aJJ" secondAttribute="leadingMargin" id="5cw-Pq-4vW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="wa8-v3-srf" secondAttribute="bottom" constant="52" id="AkP-M1-mIa"/>
+                                        <constraint firstItem="wa8-v3-srf" firstAttribute="top" secondItem="jys-lM-aJJ" secondAttribute="topMargin" id="COQ-Sf-YPV"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="date" destination="hIk-M7-88K" id="vy6-uE-Jgq"/>
-                                    <outlet property="number" destination="JKi-nG-TOT" id="kvY-eo-e5j"/>
-                                    <outlet property="title" destination="u8P-E6-9gG" id="Jkf-Xi-HbW"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -72,6 +75,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="d3M-LG-Oge"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="tRb-7R-Ty3">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
