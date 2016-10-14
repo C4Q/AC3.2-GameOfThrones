@@ -10,7 +10,6 @@ import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
     
-    
     var episodes = [GOTEpisode]()
     var selectedEp: GOTEpisode?
     
@@ -53,26 +52,36 @@ class GameOfThronesTableViewController: UITableViewController {
         return cell
     }
     
-    
-    
-    //MARK: Access JSON function
-    
-    func loadData() {
-        guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
-            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
-            let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
-                return
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            tableView.title
+        }
+            
+            
         }
         
-        if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
-            for epDict in episodes {
-                if let ep = GOTEpisode(withDict: epDict) {
-                    self.episodes.append(ep)
+        //MARK: Functions
+        
+        func loadData() {
+            guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
+                let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
+                let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
+                    return
+            }
+            
+            if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
+                for epDict in episodes {
+                    if let ep = GOTEpisode(withDict: epDict) {
+                        self.episodes.append(ep)
+                    }
                 }
             }
         }
+        
+        
+        
     }
-    
     
     
     
