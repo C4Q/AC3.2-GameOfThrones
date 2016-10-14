@@ -10,6 +10,10 @@ import UIKit
 
 class selectEpisodeCellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var number: UILabel!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var date: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

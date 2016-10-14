@@ -58,6 +58,11 @@
                                         </stackView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="date" destination="hIk-M7-88K" id="vy6-uE-Jgq"/>
+                                    <outlet property="number" destination="JKi-nG-TOT" id="kvY-eo-e5j"/>
+                                    <outlet property="title" destination="u8P-E6-9gG" id="Jkf-Xi-HbW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
