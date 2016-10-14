@@ -9,43 +9,55 @@
 import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
-
+var episodes = [GOTEpisode]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        loadData()
+        self.title = "Game Of Thrones"
+       
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func loadData() {
+        guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
+            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
+            let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
+                return
+        }
+        
+        if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
+            for epDict in episodes {
+                if let ep = GOTEpisode(withDict: epDict) {
+                    self.episodes.append(ep)
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return episodes.count
     }
+    
 
-    /*
+
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "oneEpisode", for: indexPath)
+        let GoTCell = episodes[indexPath.row]
+        cell.textLabel?.text = GoTCell.name
+        cell.detailTextLabel?.text = GoTCell.airdate
+        
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,14 +94,19 @@ class GameOfThronesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "episodeInfo" {
+        if let destination = segue.destination as? DetailViewController {
+            destination.detailEpisode =  sender as? GOTEpisode
+        }
+        }
     }
-    */
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedEpisode = self.episodes[indexPath.row]
+        performSegue(withIdentifier: "episodeInfo", sender: selectedEpisode)
+    }
 }

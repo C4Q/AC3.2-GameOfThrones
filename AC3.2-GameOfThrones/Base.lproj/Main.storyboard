@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RzW-Uh-ojm">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RzW-Uh-ojm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,12 +16,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gzx-2j-BOY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="oneEpisode" textLabel="1Wd-Tl-gYn" detailTextLabel="7xd-ZH-DNl" style="IBUITableViewCellStyleSubtitle" id="Gzx-2j-BOY" customClass="oneEpisode">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gzx-2j-BOY" id="jys-lM-aJJ">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Wd-Tl-gYn">
+                                            <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7xd-ZH-DNl">
+                                            <frame key="frameInset" minX="15" minY="25.5" width="33" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -30,10 +47,70 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="d3M-LG-Oge"/>
+                    <connections>
+                        <segue destination="NFl-k5-Yjw" kind="show" identifier="episodeInfo" id="2QQ-qT-pDi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Orb-fK-tUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1012" y="160"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="PUZ-0Z-qBX">
+            <objects>
+                <viewController id="NFl-k5-Yjw" customClass="DetailViewController" customModule="AC3_2_GameOfThrones" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="La4-A6-Wna"/>
+                        <viewControllerLayoutGuide type="bottom" id="XYB-EW-uqr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pSX-y7-doc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ez-cb-0el"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQg-hQ-qch">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="VUt-Ta-F4q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZM-vu-3Ce">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="LBW-Fo-9je"/>
+                                    <constraint firstAttribute="height" constant="64" id="dmt-YK-JIn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Button" image="TVMazeIcon"/>
+                                <connections>
+                                    <action selector="goToWebsite:" destination="NFl-k5-Yjw" eventType="touchUpInside" id="mhh-xE-gHq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XYB-EW-uqr" firstAttribute="top" secondItem="iZM-vu-3Ce" secondAttribute="bottom" constant="237" id="1Ti-Sy-GLa"/>
+                            <constraint firstItem="2Ez-cb-0el" firstAttribute="trailing" secondItem="pSX-y7-doc" secondAttribute="trailingMargin" id="6jG-eW-3X8"/>
+                            <constraint firstItem="XYB-EW-uqr" firstAttribute="top" secondItem="ZQg-hQ-qch" secondAttribute="bottom" constant="309" id="CZY-a6-LN3"/>
+                            <constraint firstItem="2Ez-cb-0el" firstAttribute="top" secondItem="La4-A6-Wna" secondAttribute="bottom" constant="8" id="FkX-l3-CMK"/>
+                            <constraint firstItem="ZQg-hQ-qch" firstAttribute="top" secondItem="2Ez-cb-0el" secondAttribute="bottom" constant="18" id="Lby-lF-2Bv"/>
+                            <constraint firstItem="iZM-vu-3Ce" firstAttribute="leading" secondItem="pSX-y7-doc" secondAttribute="leadingMargin" constant="139" id="MYE-9L-9MH"/>
+                            <constraint firstItem="ZQg-hQ-qch" firstAttribute="trailing" secondItem="pSX-y7-doc" secondAttribute="trailingMargin" id="TPd-9k-SzL"/>
+                            <constraint firstItem="2Ez-cb-0el" firstAttribute="leading" secondItem="pSX-y7-doc" secondAttribute="leadingMargin" id="UfI-dR-h2Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iZM-vu-3Ce" secondAttribute="trailing" constant="140" id="mTH-VQ-lfR"/>
+                            <constraint firstItem="iZM-vu-3Ce" firstAttribute="top" secondItem="ZQg-hQ-qch" secondAttribute="bottom" constant="8" id="rvS-w8-TsN"/>
+                            <constraint firstItem="ZQg-hQ-qch" firstAttribute="leading" secondItem="pSX-y7-doc" secondAttribute="leadingMargin" id="ztB-0c-jPf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="episodeImage" destination="2Ez-cb-0el" id="alY-J6-XAK"/>
+                        <outlet property="episodeTitle" destination="ZQg-hQ-qch" id="0rr-Ji-ACG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQp-jA-GPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1808.8" y="168.6656671664168"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KzA-EL-rAA">
@@ -52,4 +129,7 @@
             <point key="canvasLocation" x="60" y="160"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TVMazeIcon" width="64" height="64"/>
+    </resources>
 </document>
