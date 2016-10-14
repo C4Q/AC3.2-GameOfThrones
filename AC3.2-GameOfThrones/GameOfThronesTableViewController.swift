@@ -46,31 +46,29 @@ class GameOfThronesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return episodes.count
-//    }
-//
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return episodes.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
 
         // Configure the cell...
         
-        /*
-        let thisCellsEpisode = self.episode[indexPath.row]
-        ??? = thisCellsEpisode.name
-        ??? = thisCellsEpisode.number
-        ??? = thisCellsEpisode.airdate
-        */
 
-//        return cell
-//    }
+        let thisCellsEpisode = self.episodes[indexPath.row]
+        //cell.episodeTitle?.text = thisCellsEpisode.name
+        cell.textLabel?.text = "\(thisCellsEpisode.name)"
+        //cell.episodeNumber?.text = thisCellsEpisode.number
+        //cell.episodeDate?.text = thisCellsEpisode.airdate
+ 
+
+        return cell
+    }
 
     /*
     // Override to support conditional editing of the table view.
