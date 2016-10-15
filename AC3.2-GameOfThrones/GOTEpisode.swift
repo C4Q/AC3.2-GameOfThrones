@@ -12,7 +12,6 @@ class GOTEpisode {
     let name: String
     let number: Int
     let airdate: String
-    
     let runtime: Int
     let season: Int
     let summary: String
@@ -40,7 +39,6 @@ class GOTEpisode {
         self.id = id
         self.url = url
         self.image = image
-        
     }
     
     convenience init?(withDict dict: [String:Any]) {

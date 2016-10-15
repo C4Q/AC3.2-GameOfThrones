@@ -13,16 +13,9 @@ class GOTEpDetailViewController: UIViewController {
     var thisGOTEpisode: GOTEpisode!
     
     @IBOutlet weak var titleLabel: UILabel!
-   
     @IBOutlet weak var seasonEpLabel: UILabel!
-    
     @IBOutlet weak var airdateRuntimeLabel: UILabel!
-    
-
-    
     @IBOutlet weak var imageView: UIImageView!
-    
-    
     @IBOutlet weak var summaryLabel: UILabel!
     
     override func viewDidLoad() {
@@ -38,7 +31,6 @@ class GOTEpDetailViewController: UIViewController {
         seasonEpLabel.text = "Season \(thisGOTEpisode.season), episode \(thisGOTEpisode.number)"
         airdateRuntimeLabel.text = "First aired: \(thisGOTEpisode.airdate),  running time: \(thisGOTEpisode.runtime) minutes."
         summaryLabel.text = "Summary:  " + thisGOTEpisode.summary.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        
     }
     
     func getImage(urlString: String?) -> UIImage? {
@@ -60,22 +52,8 @@ class GOTEpDetailViewController: UIViewController {
         return String(temp)
     }
     
-    
     @IBAction func linkButtonTapped(_ sender: UIButton) {
         guard let url = URL(string: thisGOTEpisode.url) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        
-    }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    }    
 }

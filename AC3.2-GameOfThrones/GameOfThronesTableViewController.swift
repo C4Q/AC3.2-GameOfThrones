@@ -22,7 +22,6 @@ class GameOfThronesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
     
     func loadData() {
         guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
@@ -63,7 +62,6 @@ class GameOfThronesTableViewController: UITableViewController {
         return seasonArray.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let seasonNumber = indexPath.section + 1
         let episodesBySeason: [GOTEpisode] = episodes.filter { $0.season == seasonNumber }
@@ -80,6 +78,7 @@ class GameOfThronesTableViewController: UITableViewController {
         let seasonNumber = indexPath.section + 1
         let episodesBySeason: [GOTEpisode] = episodes.filter { $0.season == seasonNumber }
         let selectedEpisode = episodesBySeason[indexPath.row]
+        
         performSegue(withIdentifier: "GOTEpDetailSegue", sender: selectedEpisode)
     }
     
@@ -87,6 +86,7 @@ class GameOfThronesTableViewController: UITableViewController {
         if segue.identifier == "GOTEpDetailSegue" {
             let destinationViewController = segue.destination as! GOTEpDetailViewController
             let thisEpisode = sender as! GOTEpisode
+            
             destinationViewController.thisGOTEpisode = thisEpisode
         }
     }
