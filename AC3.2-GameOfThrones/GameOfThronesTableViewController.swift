@@ -9,43 +9,76 @@
 import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
-
+    
+    var episodes = [GOTEpisode]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200.0
+        
+        loadData()
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func loadData() {
+        guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
+            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
+            let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
+                return
+        }
+        
+        if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
+            for epDict in episodes {
+                if let ep = GOTEpisode(withDict: epDict) {
+                    self.episodes.append(ep)
+                }
+            }
+        }
     }
-
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.episodes.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GOTEpisode", for: indexPath)
 
-        // Configure the cell...
-
-        return cell
+//        if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+//            movieCell.movieTitleLabel.text = data[indexPath.row].title
+//            movieCell.movieSummaryLabel.text = data[indexPath.row].summary
+//            movieCell.moviePosterImageView.image = UIImage(named: data[indexPath.row].poster)
+//            return movieCell
+//        }
+        
+        if let GOTEpisodeCell: GOTTableViewCell = cell as? GOTTableViewCell {
+            let episode = self.episodes[indexPath.row]
+            
+            GOTEpisodeCell.GOTEpisodeNameLabel.text = episode.name
+            GOTEpisodeCell.GOTEpisodeAirdateLabel.text = episode.summary
+            GOTEpisodeCell.GOTPosterImage.image = UIImage(named: episode.mediumImage!)
+            return GOTEpisodeCell
+        }
+            return cell
     }
-    */
+
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedTitle = self.episodes[indexPath.row]
+//        performSegue(withIdentifier: "GOTDetailSegue", sender: selectedTitle)
+//    }
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,14 +115,19 @@ class GameOfThronesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "GOTDetailSegue" {
+//            if let destination = segue.destination as? GOTDetailViewController {
+//                destination.detailGOTData = sender as? GOTEpisode
+//            }
+//        }
+//        
+//    
+//    }
+    
 
 }
