@@ -62,8 +62,8 @@ class GameOfThronesTableViewController: UITableViewController {
 
         let thisCellsEpisode = self.episodes[indexPath.row]
         //cell.episodeTitle?.text = thisCellsEpisode.name
-        cell.textLabel?.text = "\(thisCellsEpisode.name)"
-        //cell.episodeNumber?.text = thisCellsEpisode.number
+        //cell.textLabel?.text = "\(thisCellsEpisode.name)"
+        //cell.textLabel?.text = String(thisCellsEpisode.number)
         //cell.episodeDate?.text = thisCellsEpisode.airdate
  
 
