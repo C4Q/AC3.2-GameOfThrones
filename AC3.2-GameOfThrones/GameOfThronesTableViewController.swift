@@ -9,12 +9,15 @@
 import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
-
+    
     var episodes = [GOTEpisode]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200.0
+        
         loadData()
         
     }
@@ -41,7 +44,7 @@ class GameOfThronesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,18 +56,28 @@ class GameOfThronesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GOTEpisode", for: indexPath)
 
-        let episode = self.episodes[indexPath.row]
-        cell.textLabel?.text = episode.name
-        cell.detailTextLabel?.text = episode.airdate
+//        if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+//            movieCell.movieTitleLabel.text = data[indexPath.row].title
+//            movieCell.movieSummaryLabel.text = data[indexPath.row].summary
+//            movieCell.moviePosterImageView.image = UIImage(named: data[indexPath.row].poster)
+//            return movieCell
+//        }
         
+        if let GOTEpisodeCell: GOTTableViewCell = cell as? GOTTableViewCell {
+            let episode = self.episodes[indexPath.row]
+            
+            GOTEpisodeCell.GOTEpisodeNameLabel.text = episode.name
+            GOTEpisodeCell.GOTEpisodeAirdateLabel.text = episode.summary
+            GOTEpisodeCell.GOTPosterImage.image = UIImage(named: episode.mediumImage!)
+            return GOTEpisodeCell
+        }
+            return cell
+    }
 
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedTitle = self.episodes[indexPath.row]
-        performSegue(withIdentifier: "GOTDetailSegue", sender: selectedTitle)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedTitle = self.episodes[indexPath.row]
+//        performSegue(withIdentifier: "GOTDetailSegue", sender: selectedTitle)
+//    }
 
 
     /*
@@ -106,15 +119,15 @@ class GameOfThronesTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GOTDetailSegue" {
-            if let destination = segue.destination as? GOTDetailViewController {
-                destination.detailGOTData = sender as? GOTEpisode
-            }
-        }
-        
-    
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "GOTDetailSegue" {
+//            if let destination = segue.destination as? GOTDetailViewController {
+//                destination.detailGOTData = sender as? GOTEpisode
+//            }
+//        }
+//        
+//    
+//    }
     
 
 }
