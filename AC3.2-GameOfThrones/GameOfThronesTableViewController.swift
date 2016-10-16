@@ -63,9 +63,10 @@ class GameOfThronesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCell", for: indexPath)
-        cell.textLabel?.text = episodes[indexPath.row].name
-        cell.detailTextLabel?.text = episodes[indexPath.row].airdate
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCell", for: indexPath) as! GOTTableViewCell
+        let thisEpisode = bySeason(season: indexPath.section + 1)[indexPath.row]
+        cell.textLabel?.text = thisEpisode.name
+        cell.detailTextLabel?.text = thisEpisode.airdate
         
         cell.backgroundColor = UIColor.darkGray
         cell.textLabel?.textColor = UIColor.white
@@ -76,12 +77,13 @@ class GameOfThronesTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowEpisodeDetailSegue" {
-            if let destination = segue.destination as? EpisodeDetailViewController {
-                destination.thisGOTEpisode =  sender as! GOTEpisode
+        if let tappedGOTCell = sender as? GOTTableViewCell{
+            if segue.identifier == "ShowEpisodeDetailSegue" {
+                let destination = segue.destination as! EpisodeDetailViewController
+                let cellIndexPath = self.tableView.indexPath(for: tappedGOTCell)!
+                let selectedGOTepisode: GOTEpisode = bySeason(season: cellIndexPath.section + 1)[cellIndexPath.row]
+                destination.thisGOTEpisode = selectedGOTepisode
             }
         }
     }
-    
-    
 }

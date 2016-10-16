@@ -19,30 +19,9 @@ class EpisodeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         episodeNameLabel.text = thisGOTEpisode.name
-        seasonAndEpisodeNumberLabel.text = "Season \(thisGOTEpisode.season), episode \(thisGOTEpisode.number)"
+        seasonAndEpisodeNumberLabel.text = "Season \(thisGOTEpisode.season), Episode \(thisGOTEpisode.number)"
         airdateLabel.text = thisGOTEpisode.airdate
-        summaryLabel.text = thisGOTEpisode.summary
-        
-        
-        // Do any additional setup after loading the view.
+        summaryLabel.text = thisGOTEpisode.summary.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
