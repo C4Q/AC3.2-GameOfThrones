@@ -17,7 +17,7 @@ protocol Episode {
 }
 
 class GOTEpisode: Episode {
-    let name: String
+    let name: String//
     let number: Int
     let airdate: String
     
