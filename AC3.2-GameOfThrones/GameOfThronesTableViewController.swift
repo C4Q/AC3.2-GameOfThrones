@@ -11,7 +11,6 @@ import UIKit
 class GameOfThronesTableViewController: UITableViewController {
     
     var episodes = [GOTEpisode]()
-    var chosenEpisode: GOTEpisode?
     
     func loadData() {
         
@@ -54,6 +53,7 @@ class GameOfThronesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes.count // should generally match the number of items in our array
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
@@ -69,13 +69,6 @@ class GameOfThronesTableViewController: UITableViewController {
         cell.textLabel?.font = UIFont(name: "Baskerville-Semibold", size: 16)
         
         return cell
-    }
-    
-    // MARK: - Action
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosenEpisode = episodes[indexPath.row]
-        performSegue(withIdentifier: "episodeSegue", sender: chosenEpisode)
     }
 
     /*
@@ -116,7 +109,6 @@ class GameOfThronesTableViewController: UITableViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "episodeSegue",
