@@ -11,6 +11,7 @@ import UIKit
 class GameOfThronesTableViewController: UITableViewController {
     
     var episodes = [GOTEpisode]()
+    var chosenEpisode: GOTEpisode?
     
     func loadData() {
         
@@ -33,8 +34,8 @@ class GameOfThronesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadData()
+        
         dump(episodes)
 
         // Uncomment the following line to preserve selection between presentations
@@ -69,6 +70,11 @@ class GameOfThronesTableViewController: UITableViewController {
         cell.textLabel?.font = UIFont(name: "Baskerville-Semibold", size: 16)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenEpisode = episodes[indexPath.row]
+        performSegue(withIdentifier: "episodeSegue", sender: chosenEpisode)
     }
 
     /*

@@ -17,21 +17,28 @@ protocol Episode {
 }
 
 class GOTEpisode: Episode {
-    let name: String//
+    let name: String
+    let season: Int
     let number: Int
     let airdate: String
+    let summary: String
     
-    init(name: String, number: Int, airdate: String) {
+    init(name: String, season: Int, number: Int, airdate: String, summary: String) {
         self.name = name
+        self.season = season
         self.number = number
         self.airdate = airdate
+        self.summary = summary
     }
     
     convenience init?(withDict dict: [String:Any]) {
         if let name = dict["name"] as? String,
+            let season = dict["season"] as? Int,
             let number = dict["number"] as? Int,
-            let airdate = dict["airdate"] as? String {
-            self.init(name: name, number: number, airdate: airdate)
+            let airdate = dict["airdate"] as? String,
+            let summary = dict["summary"] as? String
+        {
+            self.init(name: name, season: season, number: number, airdate: airdate, summary: summary)
         }
         else {
             return nil
