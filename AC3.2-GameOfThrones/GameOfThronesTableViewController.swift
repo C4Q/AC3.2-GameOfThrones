@@ -58,13 +58,15 @@ class GameOfThronesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
 
         // Configure the cell...
-        
 
         let thisCellsEpisode = self.episodes[indexPath.row]
         cell.textLabel?.text = "Episode \(thisCellsEpisode.number): \(thisCellsEpisode.name)" //when we have a detail cell style this calls up the main text label aka the one named title in the storyboard
         cell.detailTextLabel?.text = thisCellsEpisode.airdate // when we have a detail cell style this calls up the little text below or beside the title
  
-
+        // Styling
+        
+        cell.textLabel?.font = UIFont(name: "Baskerville-Semibold", size: 20)
+        
         return cell
     }
 
