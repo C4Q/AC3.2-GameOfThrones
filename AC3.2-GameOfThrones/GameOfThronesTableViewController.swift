@@ -61,10 +61,8 @@ class GameOfThronesTableViewController: UITableViewController {
         
 
         let thisCellsEpisode = self.episodes[indexPath.row]
-        //cell.episodeTitle?.text = thisCellsEpisode.name
-        //cell.textLabel?.text = "\(thisCellsEpisode.name)"
-        //cell.textLabel?.text = String(thisCellsEpisode.number)
-        //cell.episodeDate?.text = thisCellsEpisode.airdate
+        cell.textLabel?.text = "Episode \(thisCellsEpisode.number): \(thisCellsEpisode.name)" //when we have a detail cell style this calls up the main text label aka the one named title in the storyboard
+        cell.detailTextLabel?.text = thisCellsEpisode.airdate // when we have a detail cell style this calls up the little text below or beside the title
  
 
         return cell
