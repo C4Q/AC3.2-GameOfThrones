@@ -115,7 +115,7 @@ class GameOfThronesTableViewController: UITableViewController {
             let destination = segue.destination as? EpisodeDeetsController,
             // Pass the selected object to the new view controller.
             let episodes = sender as? GOTEpisode {
-            destination.detailEpisode = episodes
+            destination.chosenEpisode = episodes
         }
     }
 
