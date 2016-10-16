@@ -60,7 +60,6 @@ class GameOfThronesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eppy", for: indexPath)
 
         // Configure the cell...
-        
 
         let thisCellsEpisode = self.episodes[indexPath.row]
         //cell.episodeTitle?.text = thisCellsEpisode.name
@@ -68,7 +67,10 @@ class GameOfThronesTableViewController: UITableViewController {
         //cell.episodeNumber?.text = thisCellsEpisode.number
         //cell.episodeDate?.text = thisCellsEpisode.airdate
  
-
+        // Styling
+        
+        cell.textLabel?.font = UIFont(name: "Baskerville-Semibold", size: 16)
+        
         return cell
     }
 
