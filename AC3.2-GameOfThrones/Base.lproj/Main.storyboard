@@ -76,16 +76,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mr3-ab-0c2">
+                            <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mr3-ab-0c2">
+                                <frame key="frameInset" minX="16" minY="72" width="343" height="575"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13684797286987305" green="0.77443379163742065" blue="0.65935736894607544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharp Chair" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPh-Ab-sIZ">
+                                <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MLu-D3-Oi6">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SeasonNum.EpisodeNum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Moq-X4-G0V">
+                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2011-04-24" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnI-bV-YfY">
+                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Moq-X4-G0V" firstAttribute="bottom" secondItem="MLu-D3-Oi6" secondAttribute="bottomMargin" id="EFp-6M-bD1"/>
+                                    <constraint firstItem="bnI-bV-YfY" firstAttribute="leading" secondItem="Moq-X4-G0V" secondAttribute="trailing" constant="5" id="KUP-kX-2eA"/>
+                                    <constraint firstItem="Moq-X4-G0V" firstAttribute="top" secondItem="MLu-D3-Oi6" secondAttribute="topMargin" id="LOV-1u-JT7"/>
+                                    <constraint firstItem="bnI-bV-YfY" firstAttribute="top" secondItem="MLu-D3-Oi6" secondAttribute="topMargin" id="QWD-jJ-SL1"/>
+                                    <constraint firstItem="bnI-bV-YfY" firstAttribute="trailing" secondItem="MLu-D3-Oi6" secondAttribute="trailingMargin" id="QYp-ax-85B"/>
+                                    <constraint firstItem="bnI-bV-YfY" firstAttribute="bottom" secondItem="MLu-D3-Oi6" secondAttribute="bottomMargin" id="XEj-68-pD5"/>
+                                    <constraint firstItem="Moq-X4-G0V" firstAttribute="leading" secondItem="MLu-D3-Oi6" secondAttribute="leadingMargin" id="f3y-ze-JQQ"/>
+                                    <constraint firstItem="bnI-bV-YfY" firstAttribute="leading" secondItem="Moq-X4-G0V" secondAttribute="trailing" constant="5" id="v5V-Lp-OkP"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Summary" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmd-Qa-qf9">
+                                <frame key="frameInset" minX="16" minY="142" width="343" height="277"/>
+                                <fontDescription key="fontDescription" name="Baskerville-SemiBold" family="Baskerville" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="mr3-ab-0c2" secondAttribute="bottom" constant="20" id="GHs-nc-Nw9"/>
-                            <constraint firstItem="mr3-ab-0c2" firstAttribute="top" secondItem="XTv-d7-mKB" secondAttribute="topMargin" constant="72" id="I1Z-aq-b9P"/>
-                            <constraint firstItem="mr3-ab-0c2" firstAttribute="leading" secondItem="XTv-d7-mKB" secondAttribute="leadingMargin" id="f5I-6l-eXX"/>
-                            <constraint firstItem="mr3-ab-0c2" firstAttribute="trailing" secondItem="XTv-d7-mKB" secondAttribute="trailingMargin" id="wD9-NN-y4E"/>
+                            <constraint firstItem="bM1-41-ZjV" firstAttribute="top" secondItem="MLu-D3-Oi6" secondAttribute="bottom" constant="533" id="13j-hP-YvF"/>
+                            <constraint firstItem="jmd-Qa-qf9" firstAttribute="trailing" secondItem="XTv-d7-mKB" secondAttribute="trailingMargin" constant="8" id="2BP-GE-aiM"/>
+                            <constraint firstItem="jmd-Qa-qf9" firstAttribute="top" secondItem="MLu-D3-Oi6" secondAttribute="bottom" constant="8" id="4su-90-ybR"/>
+                            <constraint firstItem="jmd-Qa-qf9" firstAttribute="leading" secondItem="XTv-d7-mKB" secondAttribute="leadingMargin" constant="8" id="Jsk-9j-CPd"/>
+                            <constraint firstItem="HPh-Ab-sIZ" firstAttribute="trailing" secondItem="XTv-d7-mKB" secondAttribute="trailingMargin" id="LaQ-Bx-Yvg"/>
+                            <constraint firstItem="MLu-D3-Oi6" firstAttribute="top" secondItem="HPh-Ab-sIZ" secondAttribute="bottom" constant="8" id="SOG-p6-HhI"/>
+                            <constraint firstItem="bM1-41-ZjV" firstAttribute="top" secondItem="MLu-D3-Oi6" secondAttribute="bottom" constant="533" id="UhK-37-9vb"/>
+                            <constraint firstItem="HPh-Ab-sIZ" firstAttribute="top" secondItem="Fjb-oL-Goo" secondAttribute="bottom" constant="8" id="bWs-0O-8nj"/>
+                            <constraint firstItem="HPh-Ab-sIZ" firstAttribute="leading" secondItem="XTv-d7-mKB" secondAttribute="leadingMargin" id="gZL-Fb-vTT"/>
+                            <constraint firstItem="MLu-D3-Oi6" firstAttribute="top" secondItem="HPh-Ab-sIZ" secondAttribute="bottom" constant="8" id="ixz-wO-9I4"/>
+                            <constraint firstItem="bM1-41-ZjV" firstAttribute="top" secondItem="HPh-Ab-sIZ" secondAttribute="bottom" constant="561" id="sb9-dC-POw"/>
+                            <constraint firstItem="MLu-D3-Oi6" firstAttribute="leading" secondItem="XTv-d7-mKB" secondAttribute="leadingMargin" id="zM8-LU-ABw"/>
                         </constraints>
                     </view>
                 </viewController>
