@@ -65,7 +65,7 @@ class GameOfThronesTableViewController: UITableViewController {
  
         // Styling
         
-        cell.textLabel?.font = UIFont(name: "Baskerville-Semibold", size: 20)
+        cell.textLabel?.font = UIFont(name: "Baskerville-Semibold", size: 16)
         
         return cell
     }
