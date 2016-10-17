@@ -51,52 +51,54 @@ class GameOfThronesTableViewController: UITableViewController {
         
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            tableView.title
-        }
-            
-            
-        }
-        
-        //MARK: Functions
-        
-        func loadData() {
-            guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
-                let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
-                let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
-                    return
-            }
-            
-            if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
-                for epDict in episodes {
-                    if let ep = GOTEpisode(withDict: epDict) {
-                        self.episodes.append(ep)
-                    }
-                }
-            }
-        }
-        
-        
-        
+    /*
+     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+     switch section {
+     case 0:
+     tableView.title
+     }
+     
+     
+     
+     */
+
+
+//MARK: Functions
+
+func loadData() {
+    guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
+        let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
+        let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
+            return
     }
     
-    
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "GOTSegue" {
-            if let gvc = segue.destination as? GOTDetailViewController {
-                gvc.stupidEpisode = selectedEp
+    if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
+        for epDict in episodes {
+            if let ep = GOTEpisode(withDict: epDict) {
+                self.episodes.append(ep)
             }
         }
     }
-    
-    
+}
+
+
+
+
+
+
+
+// MARK: - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    if segue.identifier == "GOTSegue" {
+        if let gvc = segue.destination as? GOTDetailViewController {
+            gvc.stupidEpisode = selectedEp
+        }
+    }
+}
+
+
 }

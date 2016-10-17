@@ -18,7 +18,7 @@ class GOTDetailViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var epTitle: UILabel!
-    @IBOutlet weak var summary: UITextField!
+    @IBOutlet weak var summary: UITextView!
     
     func randomColor() -> CGFloat {
         return CGFloat(arc4random_uniform(10))/10
