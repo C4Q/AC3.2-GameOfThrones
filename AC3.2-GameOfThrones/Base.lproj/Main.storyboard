@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RzW-Uh-ojm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RzW-Uh-ojm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,17 +11,33 @@
         <scene sceneID="sjx-cT-F0W">
             <objects>
                 <tableViewController id="W4q-qE-EWG" customClass="GameOfThronesTableViewController" customModule="AC3_2_GameOfThrones" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oAx-B9-1iZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oAx-B9-1iZ" userLabel="Game Of Thrones Table View Controller" customClass="GameOfThronesViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Gzx-2j-BOY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="episodeCell" textLabel="EgS-v1-DNr" detailTextLabel="H6L-7z-yzD" style="IBUITableViewCellStyleSubtitle" id="Gzx-2j-BOY">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gzx-2j-BOY" id="jys-lM-aJJ">
                                     <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EgS-v1-DNr">
+                                            <frame key="frameInset" minX="15" minY="2" width="41" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H6L-7z-yzD">
+                                            <frame key="frameInset" minX="15" minY="22" width="60" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
+                                            <color key="textColor" red="0.35340544871794877" green="0.35340544871794877" blue="0.35340544871794877" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -30,10 +47,75 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="d3M-LG-Oge"/>
+                    <connections>
+                        <segue destination="M5B-LF-Mhw" kind="show" identifier="episodeSegue" id="q8e-Er-p2j"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Orb-fK-tUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1012" y="160"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZpW-bQ-j8v">
+            <objects>
+                <viewController id="M5B-LF-Mhw" customClass="GOTViewController" customModule="AC3_2_GameOfThrones" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ahn-EU-cOO"/>
+                        <viewControllerLayoutGuide type="bottom" id="ofA-M7-e1L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zHE-JS-gPe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SU-La-Cxo">
+                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-H2-alw">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="cw9-Ck-eOQ"/>
+                                    <constraint firstAttribute="height" constant="25" id="fJI-SR-Wnv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Summary" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="939-kW-fuh">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-Fy-fJM">
+                                <frame key="frameInset" minX="16" minY="147" width="343" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="939-kW-fuh" firstAttribute="leading" secondItem="zHE-JS-gPe" secondAttribute="leadingMargin" constant="4" id="3QC-2c-dU2"/>
+                            <constraint firstItem="NJw-H2-alw" firstAttribute="top" secondItem="Ahn-EU-cOO" secondAttribute="bottom" constant="34" id="QjN-AE-GMP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="939-kW-fuh" secondAttribute="trailing" constant="-4" id="Ze2-xs-0J2"/>
+                            <constraint firstAttribute="bottom" secondItem="939-kW-fuh" secondAttribute="bottom" constant="20" symbolic="YES" id="c0d-nW-J5H"/>
+                            <constraint firstItem="NJw-H2-alw" firstAttribute="centerY" secondItem="4SU-La-Cxo" secondAttribute="centerY" id="dee-Dh-6SL"/>
+                            <constraint firstItem="939-kW-fuh" firstAttribute="top" secondItem="4SU-La-Cxo" secondAttribute="bottom" constant="181" id="l2G-4L-RzA"/>
+                            <constraint firstItem="4SU-La-Cxo" firstAttribute="leading" secondItem="NJw-H2-alw" secondAttribute="trailing" constant="4" id="o2g-1g-oBJ"/>
+                            <constraint firstItem="4SU-La-Cxo" firstAttribute="trailing" secondItem="zHE-JS-gPe" secondAttribute="trailingMargin" id="pkC-ci-2tz"/>
+                            <constraint firstItem="4SU-La-Cxo" firstAttribute="top" secondItem="Ahn-EU-cOO" secondAttribute="bottom" constant="8" symbolic="YES" id="uwg-v3-V5C"/>
+                            <constraint firstItem="NJw-H2-alw" firstAttribute="leading" secondItem="zHE-JS-gPe" secondAttribute="leadingMargin" id="wHc-RR-W9z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="episodeDetailLabel" destination="4SU-La-Cxo" id="tsk-sN-1ng"/>
+                        <outlet property="episodeImageView" destination="gkk-Fy-fJM" id="FAk-Bf-qZC"/>
+                        <outlet property="episodeNumberLabel" destination="NJw-H2-alw" id="gUX-KE-PdM"/>
+                        <outlet property="episodeSummaryLabel" destination="939-kW-fuh" id="XTR-nP-WjV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YB7-Ku-2iV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685.5999999999999" y="161.46926536731635"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KzA-EL-rAA">
