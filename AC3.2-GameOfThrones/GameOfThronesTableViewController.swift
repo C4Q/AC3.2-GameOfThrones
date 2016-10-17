@@ -10,6 +10,8 @@ import UIKit
 
 class GameOfThronesTableViewController: UITableViewController {
 
+    var episodes = [GOTEpisode]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,34 +20,71 @@ class GameOfThronesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        loadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func loadData() {
+        guard let path = Bundle.main.path(forResource: "got", ofType: "json"),
+            let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path), options:  NSData.ReadingOptions.mappedIfSafe),
+            let dict = try? JSONSerialization.jsonObject(with: jsonData as Data, options: .allowFragments) as? NSDictionary else {
+                return
+        }
+        
+        if let episodes = dict?.value(forKeyPath: "_embedded.episodes") as? [[String:Any]] {
+            for epDict in episodes {
+                if let ep = GOTEpisode(withDict: epDict) {
+                    self.episodes.append(ep)
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        let season = episodes.filter({ ($0.season - 1) == section })
+        return season.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Season \(section + 1)"
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
 
         // Configure the cell...
+        let seasonEpisodes = episodes.filter({ ($0.season - 1) == indexPath.section })
+        let epsiode = seasonEpisodes[indexPath.row]
+        
+        cell.textLabel?.text = epsiode.name
+        cell.detailTextLabel?.text = epsiode.airdate
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let epsiode = episodes[indexPath.row]
+        
+        performSegue(withIdentifier: "detail", sender: epsiode)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail" {
+            let destinationController = segue.destination as! DetailViewController
+            let thisEpisode = sender as! GOTEpisode
+            
+            destinationController.episodeDetail = thisEpisode
+        }
+    }
+ 
 
     /*
     // Override to support conditional editing of the table view.
