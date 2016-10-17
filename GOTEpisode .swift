@@ -14,57 +14,20 @@ class GOTEpisode {
     let airdate: String
     let summary: String
     
+    let image: String
+    
     let season: Int
     let link: String
-
-
-//    "name": "Winter is Coming",
-//    "airdate": "2011-04-17",
-    
-    //    "season": 1,
-    //    "runtime": 60,
-    //    "href"
-    
-    //    "number": 1,
- 
-    
-//    "airstamp": "2011-04-17T21:00:00-04:00",
-//    "airtime": "21:00",
-//    "id": 4952,
-//    image
-
-    
-    ///IMAGE STUFFS
-    
-//    let image: UIImage?
-//    let data: Data?
-//
-//    
-//    //1. Create a url from the string of the url
-//    let url = URL.init(string: "website.gov")
-//    
-//    //2. Create a data object out of the url
-//    if let unwrappedURL = url {
-//        data = try? Data.init(contentsOf: unwrappedURL)
-//    }
-//    
-//    //3. Create an image out of the data object created
-//    if let realData = data {
-//        image = UIImage(data: realData)
-//    }
     
     
-//    let url = URL.init(string: )
-    
-    
-    init(name: String, number: Int, airdate: String, summary: String, season: Int, link: String) {
+    init(name: String, number: Int, airdate: String, summary: String, image: String, season: Int, link: String) {
         self.name = name
         self.number = number
         self.airdate = airdate
         self.summary = summary
+        self.image = image
         self.season = season
         self.link = link
-        
     }
     
     convenience init?(withDict dict: [String:Any]) {
@@ -72,9 +35,13 @@ class GOTEpisode {
             let number = dict["number"] as? Int,
             let airdate = dict["airdate"] as? String,
             let summary = dict["summary"] as? String,
+            
+            let imageDict = dict["image"] as? [String: String],
+            let image = imageDict["medium"],
+            
             let season = dict["season"] as? Int,
             let link = dict["url"] as? String{
-            self.init(name: name, number: number, airdate: airdate, summary: summary, season: season, link: link)
+            self.init(name: name, number: number, airdate: airdate, summary: summary, image: image, season: season, link: link)
          
         }
             

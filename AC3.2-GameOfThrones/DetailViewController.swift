@@ -16,18 +16,25 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var season: UILabel!
     @IBOutlet weak var number: UILabel!
     
+    
     var detailMovie: GOTEpisode?
-    @IBAction func link(_ sender: UIButton) {
-        if let url = NSURL(string: (detailMovie?.link)!){
-        UIApplication.shared.openURL(url as URL)
-        }
-    }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeImage.image = UIImage(named: "GOT@2X.jpeg")
+        
+//        var image: UIImage?
+        var data: Data?
+        
+        let urlString = URL(string: (detailMovie?.image)!)
+        if let unwrappedURL = urlString{
+            data = try! Data.init(contentsOf: unwrappedURL)
+        }
+        if let realData = data{
+            homeImage.image = UIImage(data: realData)
+        }
+//        homeImage.image = UIImage(named: "GOT@2X.jpeg")
         
         if let realSeason = detailMovie?.season{
             season.text = "Season: \(String(realSeason))"
@@ -46,6 +53,11 @@ class DetailViewController: UIViewController {
         summaryLabel.backgroundColor = UIColor(white: 0.95, alpha: 1)
     }
 
+    @IBAction func link(_ sender: UIButton) {
+        if let url = NSURL(string: (detailMovie?.link)!){
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
  
 
 }
