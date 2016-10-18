@@ -120,9 +120,10 @@ class GameOfThronesTableViewController: UITableViewController {
         if segue.identifier == "episodeSegue",
             let destination = segue.destination as? EpisodeDeetsController,
             // Pass the selected object to the new view controller.
-            let episodes = sender as? GOTEpisode {
-            destination.chosenEpisode = episodes
+            let cell = sender as? UITableViewCell,
+            let ip = tableView.indexPath(for: cell) {
+            let ep = self.episodes[ip.row]
+            destination.chosenEpisode = ep
         }
     }
-
 }
