@@ -72,10 +72,10 @@ class GameOfThronesTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosenEpisode = episodes[indexPath.row]
-        performSegue(withIdentifier: "episodeSegue", sender: chosenEpisode)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        chosenEpisode = episodes[indexPath.row]
+//        performSegue(withIdentifier: "episodeSegue", sender: chosenEpisode)
+//    }
 
     /*
     // Override to support conditional editing of the table view.
