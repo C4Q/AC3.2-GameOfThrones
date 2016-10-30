@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RzW-Uh-ojm">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Episodes-->
+        <scene sceneID="sjx-cT-F0W">
+            <objects>
+                <tableViewController title="Episodes" id="W4q-qE-EWG" customClass="GameOfThronesTableViewController" customModule="AC3_2_GameOfThrones" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oAx-B9-1iZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.30588235294117649" green="0.43529411764705883" blue="0.45490196078431372" alpha="0.90546875000000004" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="episode" textLabel="BMM-0q-r87" detailTextLabel="iph-lm-rX4" style="IBUITableViewCellStyleSubtitle" id="Gzx-2j-BOY" customClass="GoTEpisodeTableViewCell" customModule="AC3_2_GameOfThrones" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" contentMode="center" tableViewCell="Gzx-2j-BOY" id="jys-lM-aJJ">
+                                    <frame key="frameInset" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BMM-0q-r87">
+                                            <frame key="frameInset" minX="15" minY="6" width="48.5" height="18.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="18"/>
+                                            <color key="textColor" red="0.0078431372549019607" green="0.13725490196078433" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iph-lm-rX4">
+                                            <frame key="frameInset" minX="15" minY="24.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.30588235294117649" green="0.43529411764705883" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="3bP-Gh-6Yx" kind="show" identifier="episodeDetails" id="Mb4-SM-da3"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="W4q-qE-EWG" id="K0W-Og-XXS"/>
+                            <outlet property="delegate" destination="W4q-qE-EWG" id="T33-lT-J3o"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Episodes" id="d3M-LG-Oge"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Orb-fK-tUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="160"/>
+        </scene>
+        <!--Episode Details-->
+        <scene sceneID="Wks-Zl-xWP">
+            <objects>
+                <viewController title="Episode Details" id="3bP-Gh-6Yx" customClass="DetailViewController" customModule="AC3_2_GameOfThrones" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VGv-KR-az6"/>
+                        <viewControllerLayoutGuide type="bottom" id="PzC-qh-iZ2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SPM-Al-ogb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" spacing="14" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BBk-Uu-94q">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodeNum" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQR-8w-pQY">
+                                        <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="16"/>
+                                        <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="airdate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prq-ph-N1x">
+                                        <fontDescription key="fontDescription" name="HoeflerText-Italic" family="Hoefler Text" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodeTitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Gfm-oA-RHH">
+                                <fontDescription key="fontDescription" name="HoeflerText-Black" family="Hoefler Text" pointSize="26"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6td-OO-66m">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HoeflerText-Regular" family="Hoefler Text" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rB4-aj-nlV"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="BBk-Uu-94q" secondAttribute="leading" id="8Ht-XH-OCC"/>
+                            <constraint firstItem="BBk-Uu-94q" firstAttribute="top" secondItem="Gfm-oA-RHH" secondAttribute="bottom" constant="20" id="Cke-ld-2kZ"/>
+                            <constraint firstItem="rB4-aj-nlV" firstAttribute="top" secondItem="6td-OO-66m" secondAttribute="bottom" constant="8" id="CoH-4s-k6F"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BBk-Uu-94q" secondAttribute="trailing" id="DaH-72-Pv3"/>
+                            <constraint firstItem="Gfm-oA-RHH" firstAttribute="top" secondItem="VGv-KR-az6" secondAttribute="bottom" constant="19" id="EGw-zo-X86"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rB4-aj-nlV" secondAttribute="trailing" constant="57" id="MKj-sb-Ttk"/>
+                            <constraint firstItem="6td-OO-66m" firstAttribute="top" secondItem="qQR-8w-pQY" secondAttribute="bottom" constant="26" id="PWu-dl-Azl"/>
+                            <constraint firstItem="PzC-qh-iZ2" firstAttribute="top" secondItem="rB4-aj-nlV" secondAttribute="bottom" constant="342" id="Tgu-S4-5oE"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Gfm-oA-RHH" secondAttribute="leading" id="Zxj-vb-DWP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6td-OO-66m" secondAttribute="trailing" constant="10" id="dkp-3E-WRW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gfm-oA-RHH" secondAttribute="trailing" id="nqa-JN-e2d"/>
+                            <constraint firstItem="BBk-Uu-94q" firstAttribute="leading" secondItem="SPM-Al-ogb" secondAttribute="leadingMargin" id="sWV-P9-lEd"/>
+                            <constraint firstItem="rB4-aj-nlV" firstAttribute="leading" secondItem="SPM-Al-ogb" secondAttribute="leadingMargin" constant="46" id="uY1-rL-qCg"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="6td-OO-66m" secondAttribute="leading" id="yH4-CV-eoT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="airdate" destination="prq-ph-N1x" id="hO6-uS-krj"/>
+                        <outlet property="episodeNum" destination="qQR-8w-pQY" id="4EI-y8-thQ"/>
+                        <outlet property="episodeTitle" destination="Gfm-oA-RHH" id="jfA-LE-2Is"/>
+                        <outlet property="image" destination="rB4-aj-nlV" id="igy-bT-Xrt"/>
+                        <outlet property="summary" destination="6td-OO-66m" id="2ri-u9-2EH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QhG-Lc-tfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1805.5999999999999" y="199.25037481259372"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KzA-EL-rAA">
+            <objects>
+                <navigationController id="RzW-Uh-ojm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r16-3m-ZvW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="W4q-qE-EWG" kind="relationship" relationship="rootViewController" id="7rC-gg-K9T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1e-Mi-l0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="160"/>
+        </scene>
+    </scenes>
+</document>
