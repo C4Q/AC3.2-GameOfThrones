@@ -13,6 +13,9 @@
 		1EE6D1161DAD924D006EBDBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EE6D1141DAD924D006EBDBF /* LaunchScreen.storyboard */; };
 		1EE6D11E1DAD928B006EBDBF /* GameOfThronesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE6D11D1DAD928B006EBDBF /* GameOfThronesTableViewController.swift */; };
 		1EE6D1201DAD9310006EBDBF /* got.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EE6D11F1DAD9310006EBDBF /* got.json */; };
+		B9371B011DB4F36A00FD967E /* GOT@2X.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B9371B001DB4F36A00FD967E /* GOT@2X.jpeg */; };
+		B9A4EE1E1DB01CDF0052C9D9 /* GOTEpisode .swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A4EE1D1DB01CDF0052C9D9 /* GOTEpisode .swift */; };
+		B9A4EE201DB03CA20052C9D9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A4EE1F1DB03CA20052C9D9 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		1EE6D1171DAD924D006EBDBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EE6D11D1DAD928B006EBDBF /* GameOfThronesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOfThronesTableViewController.swift; path = "AC3.2-GameOfThrones/GameOfThronesTableViewController.swift"; sourceTree = "<group>"; };
 		1EE6D11F1DAD9310006EBDBF /* got.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = got.json; sourceTree = "<group>"; };
+		B9371B001DB4F36A00FD967E /* GOT@2X.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "GOT@2X.jpeg"; sourceTree = "<group>"; };
+		B9A4EE1D1DB01CDF0052C9D9 /* GOTEpisode .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GOTEpisode .swift"; sourceTree = "<group>"; };
+		B9A4EE1F1DB03CA20052C9D9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "AC3.2-GameOfThrones/DetailViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +46,10 @@
 		1EE6D0FF1DAD924C006EBDBF = {
 			isa = PBXGroup;
 			children = (
+				B9371B001DB4F36A00FD967E /* GOT@2X.jpeg */,
+				B9A4EE1D1DB01CDF0052C9D9 /* GOTEpisode .swift */,
 				1EE6D11D1DAD928B006EBDBF /* GameOfThronesTableViewController.swift */,
+				B9A4EE1F1DB03CA20052C9D9 /* DetailViewController.swift */,
 				1EE6D10A1DAD924D006EBDBF /* AC3.2-GameOfThrones */,
 				1EE6D1091DAD924D006EBDBF /* Products */,
 			);
@@ -130,6 +139,7 @@
 				1EE6D1131DAD924D006EBDBF /* Assets.xcassets in Resources */,
 				1EE6D1201DAD9310006EBDBF /* got.json in Resources */,
 				1EE6D1111DAD924D006EBDBF /* Main.storyboard in Resources */,
+				B9371B011DB4F36A00FD967E /* GOT@2X.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A4EE1E1DB01CDF0052C9D9 /* GOTEpisode .swift in Sources */,
 				1EE6D11E1DAD928B006EBDBF /* GameOfThronesTableViewController.swift in Sources */,
 				1EE6D10C1DAD924D006EBDBF /* AppDelegate.swift in Sources */,
+				B9A4EE201DB03CA20052C9D9 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +315,7 @@
 				1EE6D11C1DAD924D006EBDBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
