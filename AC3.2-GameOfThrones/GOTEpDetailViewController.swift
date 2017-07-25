@@ -26,12 +26,35 @@ class GOTEpDetailViewController: UIViewController {
     func prepareScreen() {
         navigationItem.title = thisGOTEpisode.name
         view.backgroundColor = UIColor.lightGray
-        imageView.image = getImage(urlString: thisGOTEpisode.imageOriginal)
+        
+//        imageView.image = getImage(urlString: thisGOTEpisode.imageOriginal)
+        
+        
+        self.downloadImage(urlString: thisGOTEpisode.imageOriginal!) { (returnedData: Data) in
+            
+                self.imageView.image = UIImage(data: returnedData)
+                DispatchQueue.main.async { self.view.reloadInputViews() }
+            
+        }
         titleLabel.text = thisGOTEpisode.name
         seasonEpLabel.text = "Season \(thisGOTEpisode.season), episode \(thisGOTEpisode.number)"
         airdateRuntimeLabel.text = "First aired: \(thisGOTEpisode.airdate),  running time: \(thisGOTEpisode.runtime) minutes."
         summaryLabel.text = "Summary:  " + thisGOTEpisode.summary.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
+    
+    func downloadImage(urlString: String, callback: @escaping (Data) -> () ) {
+        guard let imageURL = URL(string: urlString) else { return }
+        let session = URLSession.shared
+        session.dataTask(with: imageURL) { (data: Data?, response: URLResponse?, error: Error?) in
+            if error != nil {
+                print("Error encountered!: \(error!)")
+            }
+            guard let imageData = data else { return }
+            callback(imageData)
+            
+        }.resume()
+    }
+    
     
     func getImage(urlString: String?) -> UIImage? {
         var theImageForThis: UIImage?
